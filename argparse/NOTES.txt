@@ -1,0 +1,12 @@
+-
+- GETTING HELP FOR A PROGRAM THAT USES ARGPARSE
+-
+
+p1.py -h 
+
+usage: p1.py [-h] [--name NAME] [--surname SURNAME [SURNAME ...]]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --name NAME
+  --surname SURNAME [SURNAME ...]

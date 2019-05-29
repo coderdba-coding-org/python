@@ -1,0 +1,19 @@
+configmap data field value before - 
+{}
+
+configmap before - 
+apiVersion: v1
+data: {}
+kind: ConfigMap
+metadata: {name: dev-sd-config}
+
+
+PROCESSING data FIELD
+
+
+configmap after - 
+apiVersion: v1
+data: {data1: '{"abc": "def"}'}
+kind: ConfigMap
+metadata: {name: dev-sd-config}
+

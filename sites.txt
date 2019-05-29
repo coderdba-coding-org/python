@@ -1,0 +1,10 @@
+* string_format: 
+https://www.geeksforgeeks.org/python-format-function/
+
+* dict_list_set_and_such:
+Tuples, Lists, and Dictionaries - http://sthurlow.com/python/lesson06/
+dictionaries - https://www.w3schools.com/python/python_dictionaries.asp
+
+* json
+https://www.w3schools.com/python/python_json.asp
+

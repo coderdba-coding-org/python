@@ -23,12 +23,21 @@ def probability(df):
 def tpfpfn(ep, p):
     tp, fp, fn = 0, 0, 0
     for i in range(len(y)):
+        print()
+        print("In tpfpfn")
+        print(p[i])
+        print(ep)
+        # orig line
         if p[i] <= ep and y[i][0] == 1:
+        #if p[i] <= ep and y[i][0] == 0:
             tp += 1
         elif p[i] <= ep and y[i][0] == 0:
             fp += 1
+        # orig line
         elif p[i] > ep and y[i][0] == 1:
+        #elif p[i] > ep and y[i][0] == 0:
             fn += 1
+    print (tp, fp, fn)
     return tp, fp, fn
 
 # Define a function to calculate the ‘f1’ score 
@@ -94,13 +103,13 @@ print(p)
 print()
 
 #Now import the cross-validation data and the labels:
-#cvx = pd.read_excel('ex8data1.xlsx', sheet_name='Xval', header=None)
-cvx = pd.read_csv('ex8xval.txt', header=None)
-cvx.head()
+cvx = pd.read_csv('ex8xval.txt', header=None, usecols=[0,1])
+print(cvx.head())
 
 #Here are the labels:
-cvy = pd.read_csv('ex8labels.txt', header=None)
-cvy.head()
+#cvy = pd.read_csv('ex8labels.txt', header=None)
+cvy = pd.read_csv('ex8xval.txt', header=None, usecols=[2])
+print(cvy.head())
 
 # Now call the probability function we defined before to find the probability for our cross-validation data ‘cvx’:
 p1 = probability(cvx)
@@ -122,11 +131,40 @@ eps = [i for i in p1 if i <= p1.mean()]
 
 print("Probabilities that are lower than or equal to the mean probability")
 print(len(eps))
+print(eps)
 
 # calculate the f1 score for all the epsilon or the range of probability
 f = []
 for i in eps:
     f.append(f1(i, p1))
 
+print()
 print("The f1 score for all the epsilon or the range of probability")
-print("f")
+print(f)
+print()
+
+# Now, use the ‘argmax’ function to determine the index of the maximum f score value.
+amax = np.array(f).argmax()
+
+print("argmax is")
+print(amax)
+print()
+
+# And now use this index to get the threshold probability.
+e = eps[amax]
+print("threshold probablity is")
+print(e)
+print()
+
+# If the probability value is lower than or equal to this threshold value, the data is anomalous and otherwise, normal. 
+# We will denote the normal and anomalous data as 0and 1 respectively
+label = []
+for i in range(len(df)):
+    if p[i] <= e:
+        label.append(1)
+    else:
+        label.append(0)
+
+print("Labels are")
+print(label)
+print()

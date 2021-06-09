@@ -13,8 +13,8 @@ from scipy.stats import pearsonr
 #read text file into pandas DataFrame
 #df = pd.read_csv("data.txt", sep=" ", header=None)
 
-dfcsr = pd.read_csv("datacsr3.txt", sep=" ", header=None)
-dfdbrt = pd.read_csv("datadbrt3.txt", sep=" ", header=None)
+dfcsr = pd.read_csv("datacsr2.txt", sep=" ", header=None)
+dfdbrt = pd.read_csv("datadbrt2.txt", sep=" ", header=None)
 
 #display DataFrame
 print("DF-CSR")
@@ -40,5 +40,8 @@ pyplot.show()
 
 # Pearsons correlation
 #corr, _ = pearsonr(data1, data2)
-corr, _ = pearsonr(dfcsr, dfdbrt)
+df = pd.read_csv("csr-dbrt.csv")
+list1 = df['csr']
+list2 = df['dbrt']
+corr, _ = pearsonr(list1, list2)
 print('Pearsons correlation: %.3f' % corr)

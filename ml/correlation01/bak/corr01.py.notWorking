@@ -1,0 +1,18 @@
+#!/usr/bin/env python3
+# https://stackoverflow.com/questions/50521314/python-how-to-calculate-correlation-coefficient-with-columns-of-csv?noredirect=1&lq=1
+
+import pandas as pd
+import csv
+# rs = pd.DataFrame.from_csv(r'D:/Clustering_TOP.csv',encoding='utf-8')
+rs = pd.read_csv(r'./corr01.csv',encoding='utf-8')
+
+with open('./corr01.csv','r') as csvfile:
+    reader = csv.reader(csvfile)
+    rows = [row for row in reader]
+csv_title = rows[0]
+csv_title = csv_title[1:]
+len_csv_title = len(csv_title)
+for i in range(len_csv_title):
+    for j in range(i+1,len_csv_title):
+        print(str(csv_title[i]) + "_" + str(csv_title[j]) + " = " + str(rs[csv_title[i]].corr(rs[csv_title[j]])), end='\t')
+    print()

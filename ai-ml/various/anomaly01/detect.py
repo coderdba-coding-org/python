@@ -25,8 +25,7 @@ def tpfpfn(ep, p):
     for i in range(len(y)):
         print()
         print("In tpfpfn")
-        print(p[i])
-        print(ep)
+        print(p[i], ep, y[i][0])
         # orig line
         if p[i] <= ep and y[i][0] == 1:
         #if p[i] <= ep and y[i][0] == 0:

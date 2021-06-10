@@ -38,20 +38,15 @@ def main(argv):
    
    xdata = pd.read_csv(xfile, sep=" ", header=None)
    ydata = pd.read_csv(yfile, sep=" ", header=None)
-   
-   #display DataFrame
-   #print
-   #print
-   #print("X DATA")
-   #print(xdata)
 
-   #print
-   #print
-   #print("Y DATA")
-   #print(ydata)
-   #print
-   #print
-   
+   #print (type(xdata))
+   #print (type(ydata))
+   #print (xdata)
+
+   # https://www.geeksforgeeks.org/how-to-convert-pandas-dataframe-into-a-list/
+   xdata = xdata[0].tolist()
+   ydata = ydata[0].tolist()
+
    # ANALYZE
    
    # summarize
@@ -60,14 +55,14 @@ def main(argv):
    
    # plot
    #pyplot.scatter(x, y)
-   #pyplot.scatter(ydata, xdata)
    pyplot.scatter(xdata, ydata)
    pyplot.show()
    
    # Pearsons correlation
    #corr, _ = pearsonr(data1, data2)
-   #corr, _ = pearsonr(xdata, ydata)
-   #print('Pearsons correlation: %.3f' % corr)
+   corr, _ = pearsonr(xdata, ydata)
+   #corr, _ = pearsonr([xdata], [ydata])
+   print('Pearsons correlation: %.3f' % corr)
 
 if __name__ == "__main__":
    main(sys.argv[1:])

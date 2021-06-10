@@ -4,6 +4,6 @@ covar01.py --xfile d02/datadbrt.txt --yfile d02/datasqlexec1.txt
 covar01.py --xfile d02/datalogsync.txt --yfile d02/datasqlexec1.txt
 covar01.py --xfile d02/dataprocesslimit.txt --yfile d02/datasqlexec1.txt
 
-#d02/datasqlexec.txt
+#d02/datasqlexec0.txt
 #d02/datasqlexec1.txt
 #d02/datasqlexec2.txt

@@ -66,8 +66,8 @@ def main(argv):
    
    # Pearsons correlation
    #corr, _ = pearsonr(data1, data2)
-   #corr, _ = pearsonr(xdata, ydata)
-   #print('Pearsons correlation: %.3f' % corr)
+   corr, _ = pearsonr(xdata, ydata)
+   print('Pearsons correlation: %.3f' % corr)
 
 if __name__ == "__main__":
    main(sys.argv[1:])

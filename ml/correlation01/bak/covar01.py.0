@@ -5,6 +5,7 @@
 import sys, getopt
 
 import pandas as pd
+import numpy as np
 from numpy import mean
 from numpy import std
 from numpy.random import randn
@@ -44,8 +45,10 @@ def main(argv):
    #print (xdata)
 
    # https://www.geeksforgeeks.org/how-to-convert-pandas-dataframe-into-a-list/
-   xdata = xdata[0].tolist()
-   ydata = ydata[0].tolist()
+   xdatalist = xdata[0].tolist()
+   ydatalist = ydata[0].tolist()
+   print (xdatalist)
+   print (ydatalist)
 
    # ANALYZE
    
@@ -55,13 +58,34 @@ def main(argv):
    
    # plot
    #pyplot.scatter(x, y)
-   pyplot.scatter(xdata, ydata)
-   pyplot.show()
+   #pyplot.scatter(xdata, ydata)
+   #pyplot.show()
    
    # Pearsons correlation
    #corr, _ = pearsonr(data1, data2)
-   corr, _ = pearsonr(xdata, ydata)
+   corr, _ = pearsonr(xdatalist, ydatalist)
    print('Pearsons correlation: %.3f' % corr)
+
+   # Covariance
+   # This merging the two lists does not work
+   #all_lists = {}
+   #all_lists["x"] = xdata
+   #all_lists["y"] = ydata
+   #print (all_lists)
+   #cov_mat = np.cov(all_lists)
+   #cov_mat = np.cov(np.vstack(all_lists.values()))
+   #all_lists_vstack = np.vstack(all_lists.values())
+   #cov_mat = np.cov(all_lists_vstack)
+   #print (cov_mat)
+
+   #all_df = pd.concat([xdata, ydata])
+   #print (all_df)
+
+   xseries = pd.Series(xdatalist)
+   yseries = pd.Series(ydatalist)
+
+   covar = xseries.cov(yseries)
+   print(covar)
 
 if __name__ == "__main__":
    main(sys.argv[1:])

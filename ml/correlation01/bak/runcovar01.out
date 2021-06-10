@@ -1,0 +1,50 @@
+
+========================
+X file is  d02/databufferhit.txt
+Y file is  d02/datasqlexec1.txt
+xdata: mean=95.977 stdv=3.109
+ydata: mean=14.963 stdv=1.198
+Pearsons correlation: 0.155639
+Spearman correlation: 0.166848
+Kendall correlation: 0.069149
+Covariance: 0.591852
+
+========================
+X file is  d02/datacellread.txt
+Y file is  d02/datasqlexec1.txt
+xdata: mean=0.389 stdv=0.030
+ydata: mean=14.963 stdv=1.198
+Pearsons correlation: 0.058398
+Spearman correlation: -0.108014
+Kendall correlation: -0.087805
+Covariance: 0.002109
+
+========================
+X file is  d02/datadbrt.txt
+Y file is  d02/datasqlexec1.txt
+xdata: mean=5.777 stdv=0.857
+ydata: mean=14.963 stdv=1.198
+Pearsons correlation: 0.128918
+Spearman correlation: 0.175749
+Kendall correlation: 0.127660
+Covariance: 0.135149
+
+========================
+X file is  d02/datalogsync.txt
+Y file is  d02/datasqlexec1.txt
+xdata: mean=0.629 stdv=0.051
+ydata: mean=14.963 stdv=1.198
+Pearsons correlation: 0.185337
+Spearman correlation: 0.436496
+Kendall correlation: 0.328014
+Covariance: 0.011494
+
+========================
+X file is  d02/dataprocesslimit.txt
+Y file is  d02/datasqlexec1.txt
+xdata: mean=37.598 stdv=0.553
+ydata: mean=14.963 stdv=1.198
+Pearsons correlation: -0.401037
+Spearman correlation: -0.364467
+Kendall correlation: -0.265194
+Covariance: -0.271246

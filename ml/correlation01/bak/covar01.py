@@ -5,12 +5,15 @@
 import sys, getopt
 
 import pandas as pd
+import numpy as np
 from numpy import mean
 from numpy import std
 from numpy.random import randn
 from numpy.random import seed
 from matplotlib import pyplot
 from scipy.stats import pearsonr
+from scipy.stats import spearmanr
+from scipy.stats import kendalltau
 
 
 def main(argv):
@@ -30,6 +33,9 @@ def main(argv):
          xfile = arg
       elif opt in ("-y", "--yfile"):
          yfile = arg
+
+   print("")
+   print("========================")
    print("X file is ", xfile)
    print("Y file is ", yfile)
 
@@ -44,8 +50,10 @@ def main(argv):
    #print (xdata)
 
    # https://www.geeksforgeeks.org/how-to-convert-pandas-dataframe-into-a-list/
-   xdata = xdata[0].tolist()
-   ydata = ydata[0].tolist()
+   xdatalist = xdata[0].tolist()
+   ydatalist = ydata[0].tolist()
+   #print (xdatalist)
+   #print (ydatalist)
 
    # ANALYZE
    
@@ -55,13 +63,34 @@ def main(argv):
    
    # plot
    #pyplot.scatter(x, y)
-   pyplot.scatter(xdata, ydata)
-   pyplot.show()
+   #pyplot.scatter(xdata, ydata)
+   #pyplot.show()
    
    # Pearsons correlation
+   # Correlation: https://www.geeksforgeeks.org/exploring-correlation-in-python/
+   # Correlation: https://machinelearningmastery.com/how-to-use-correlation-to-understand-the-relationship-between-variables/
    #corr, _ = pearsonr(data1, data2)
-   corr, _ = pearsonr(xdata, ydata)
-   print('Pearsons correlation: %.3f' % corr)
+   corr, _ = pearsonr(xdatalist, ydatalist)
+   print('Pearsons correlation: %.6f' % corr)
+
+   # Spearman correlation
+   # https://machinelearningmastery.com/how-to-calculate-nonparametric-rank-correlation-in-python/
+   # corr, p = spearmanr(data1, data2)
+   corr, p = spearmanr(xdatalist, ydatalist)
+   print('Spearman correlation: %.6f' % corr)
+
+   # Kendall correlation
+   # https://machinelearningmastery.com/how-to-calculate-nonparametric-rank-correlation-in-python/
+   # corr, p = kendalltau(data1, data2)
+   corr, p = kendalltau(xdatalist, ydatalist)
+   print('Kendall correlation: %.6f' % corr)
+
+   # Covariance
+   # https://www.geeksforgeeks.org/python-pandas-series-cov-to-find-covariance/
+   xseries = pd.Series(xdatalist)
+   yseries = pd.Series(ydatalist)
+   covar = xseries.cov(yseries)
+   print('Covariance: %6f' % covar)
 
 if __name__ == "__main__":
    main(sys.argv[1:])

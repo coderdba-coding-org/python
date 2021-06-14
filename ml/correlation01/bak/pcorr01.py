@@ -5,6 +5,8 @@
 import sys, getopt
 
 import pandas as pd
+from numpy import asarray
+from numpy import polyfit
 from numpy import mean
 from numpy import std
 from numpy.random import randn
@@ -53,15 +55,26 @@ def main(argv):
    print('xdata: mean=%.3f stdv=%.3f' % (mean(xdata), std(xdata)))
    print('ydata: mean=%.3f stdv=%.3f' % (mean(ydata), std(ydata)))
    
-   # plot
-   #pyplot.scatter(x, y)
-   pyplot.scatter(xdata, ydata)
-   pyplot.show()
-   
    # Pearsons correlation
    #corr, _ = pearsonr(data1, data2)
    corr, _ = pearsonr(xdata, ydata)
    print('Pearsons correlation: %.3f' % corr)
 
+   # plot
+   #pyplot.scatter(x, y)
+   #pyplot.scatter(xdata, ydata)
+   #pyplot.show()
+
+   # plot2 - with a curve fit of sort "y=mx+b"
+   # reference: https://www.kite.com/python/answers/how-to-plot-a-line-of-best-fit-in-python
+   # to fix float problem: https://stackoverflow.com/questions/485789/why-do-i-get-typeerror-cant-multiply-sequence-by-non-int-of-type-float
+   m, b = polyfit(xdata, ydata, 1)
+   #print (m, b)
+   # regular scatter with a circle marker
+   pyplot.plot(xdata, ydata, 'o')
+   # y=mx+b
+   pyplot.plot(xdata, m*(asarray(xdata)) + b)
+   pyplot.show()
+   
 if __name__ == "__main__":
    main(sys.argv[1:])
